@@ -3,9 +3,14 @@
 </script>
 
 <template>
-  APP
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
-<style scoped>
-
+<style scoped lang="scss">
+  div {
+    display: flex;
+    height: 100vh;
+  }
 </style>
