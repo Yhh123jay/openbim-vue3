@@ -4,7 +4,8 @@
 </script>
 
 <template>
-  <IFCViewer class="ifc_viewer"></IFCViewer>
+  <IFCViewer class="ifc_viewer">
+  </IFCViewer>
 </template>
 
 <style scoped lang="scss">

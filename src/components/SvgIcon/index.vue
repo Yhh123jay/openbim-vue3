@@ -23,12 +23,12 @@ defineProps({
   //svg宽度
   width: {
     type: String,
-    default: '16px'
+    default: '30px'
   },
   //svg高度
   height: {
     type: String,
-    default: '16px'
+    default: '30px'
   }
 })
 </script>

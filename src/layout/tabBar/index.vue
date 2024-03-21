@@ -26,9 +26,9 @@ const fullScreen = () => {
   }
 }
 // 退出登录
-const logout = () => {
+const logout = async () => {
   console.log('退出登录')
-  userStore.logout()
+  await userStore.logout()
   // 跳转到登录页面
   $router.replace('/login')
 }
@@ -55,7 +55,8 @@ const logout = () => {
       <el-button :icon="FullScreen" circle @click="fullScreen"/>
       <el-button :icon="Setting" circle/>
       <Message id="message" style="margin:12px"/>
-      <img :src="userStore.userInfo.avatar" alt="avatar" style="width: 30px;height: 30px;margin:12px;border-radius: 50%">
+<!--      <img :src="userStore.userInfo.avatar" alt="avatar" style="width: 30px;height: 30px;margin:12px;border-radius: 50%">-->
+      <svg-icon name="xianxingdiqiu" style="width: 30px;height: 30px;margin:12px;border-radius: 50%"></svg-icon>
       <el-dropdown>
       <span class="el-dropdown-link">
        {{userStore.userInfo.username}}

@@ -1,5 +1,6 @@
 import * as OBC from "openbim-components"
-
+import * as THREE from "three"
+import { SimpleCamera } from 'openbim-components'
 export interface ExampleToolConfig {
   message: string
   requiredSetting: number | null
@@ -60,8 +61,13 @@ export class ExampleTool extends OBC.Component<null> implements OBC.UI, OBC.Disp
     const { requiredSetting } = this.config
     if (!(this.enabled && requiredSetting !== null)) { return }
     console.log(this.config.message, `Your required setting was ${this.config.requiredSetting}`)
+
+    //实现双击屏幕后，相机移动到指定位置
+    this.components.camera.get().position.set(50, 50, 50);
+    this.components.camera.get().lookAt(new THREE.Vector3(0, 0, 0));
+    let camera = this.components.camera as SimpleCamera
+    camera.controls.reset()
   }
-  
   get() {
     return null
   }
