@@ -11,3 +11,34 @@ html,body {
   height: 8px;
   background-color: #f5f5f5;
 }
+
+@font-face {
+  font-family: Tencent;
+  src: url("@/assets/fonts/TencentSans-W7.otf");
+}
+
+@font-face {
+  font-family: Oppo;
+  src: url("@/assets/fonts/OPPO Sans-Regular.ttf");
+}
+
+@font-face {
+  font-family: HuXiaoBo-NanShen;
+  src: url("@/assets/fonts/nanshen.otf");
+}
+
+@font-face {
+  font-family: SJyunhei;
+  src: url("@/assets/fonts/三极韵黑简体.ttf");
+}
+@font-face {
+  font-family: HYb3gj;
+  src: url("@/assets/fonts/汉仪长美黑简.ttf");
+}
+
+
+// 不可商用
+@font-face {
+  font-family: Ding;
+  src: url("@/assets/fonts/DS-DIGI.TTF");
+}

@@ -22,7 +22,7 @@ import '@/router/permission'
 // 引入仓库pinia
 import pinia from './store'
 
-// ifc-viewer配置
+//ifc-viewer配置
 const ifcViewerConfig : IfcPluginConfig = {
     defaultViewerSetup: viewer
 }
@@ -32,4 +32,5 @@ app.use(globalComponent)
 app.use(router)
 app.use(pinia)
 app.use(ifcViewer,ifcViewerConfig)
+//app.use(ifcViewer)
 app.mount('#app')

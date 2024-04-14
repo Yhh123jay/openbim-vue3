@@ -16,10 +16,13 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
     "axios": "^1.6.7",
-    "bim-fragment": "^1.4.0",
+    "bim-fragment": "1.4.1",
+    "client-zip": "^2.4.4",
+    "dayjs": "^1.10.7",
+    "echarts": "^5.5.0",
     "element-plus": "^2.6.1",
     "nprogress": "^0.2.0",
-    "openbim-components": "^1.4.15",
+    "openbim-components": "1.4.5",
     "pinia": "^2.1.7",
     "three": "^0.160.1",
     "vue": "^3.4.19",
@@ -28,6 +31,7 @@
     "web-ifc": "^0.0.51"
   },
   "devDependencies": {
+    "@types/node": "^20.11.30",
     "@types/nprogress": "^0.2.3",
     "@types/three": "0.160.0",
     "@typescript-eslint/eslint-plugin": "^7.1.1",

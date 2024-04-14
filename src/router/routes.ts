@@ -14,14 +14,31 @@ export const constantRoute = [
           title: '首页'
         }
       },
+    ]
+  },
+  {
+    path: '/bimViewer',
+    component: () => import('@/views/bimViewer/index.vue'),
+    name: 'bimViewer',
+    meta: {
+      title: '模型展示'
+    },
+    children:[
       {
-        path: '/bimViewer',
-        component: () => import('@/views/bimViewer/index.vue'),
-        name: 'bimViewer',
-        meta: {
-          title: '模型展示'
-        }
+        name: "viewer1",
+        path: "/bimViewer/viewer1",
+        component: () => import("@/views/bimViewer/viewer1/index.vue"),
       },
+      {
+        name: "viewer2",
+        path: "/bimViewer/viewer2",
+        component: () => import("@/views/bimViewer/viewer2/index.vue"),
+      },
+      {
+        name: "viewer3",
+        path: "/bimViewer/viewer3",
+        component: () => import("@/views/bimViewer/viewer3/index.vue"),
+      }
     ]
   },
   {

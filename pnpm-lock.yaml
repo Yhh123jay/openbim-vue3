@@ -12,8 +12,17 @@ dependencies:
     specifier: ^1.6.7
     version: 1.6.7
   bim-fragment:
-    specifier: ^1.4.0
-    version: 1.4.0(three@0.160.1)
+    specifier: 1.4.1
+    version: 1.4.1(three@0.160.1)
+  client-zip:
+    specifier: ^2.4.4
+    version: 2.4.4
+  dayjs:
+    specifier: ^1.10.7
+    version: 1.10.7
+  echarts:
+    specifier: ^5.5.0
+    version: 5.5.0
   element-plus:
     specifier: ^2.6.1
     version: 2.6.1(vue@3.4.21)
@@ -21,8 +30,8 @@ dependencies:
     specifier: ^0.2.0
     version: 0.2.0
   openbim-components:
-    specifier: ^1.4.15
-    version: 1.4.15(bim-fragment@1.4.0)(karma@6.4.3)(three@0.160.1)(web-ifc@0.0.51)
+    specifier: 1.4.5
+    version: 1.4.5(bim-fragment@1.4.1)(karma@6.4.3)(three@0.160.1)(web-ifc@0.0.51)
   pinia:
     specifier: ^2.1.7
     version: 2.1.7(typescript@5.4.2)(vue@3.4.21)
@@ -34,7 +43,7 @@ dependencies:
     version: 3.4.21(typescript@5.4.2)
   vue-ifc-viewer:
     specifier: ^1.0.2
-    version: 1.0.2(openbim-components@1.4.15)(vue@3.4.21)
+    version: 1.0.2(openbim-components@1.4.5)(vue@3.4.21)
   vue-router:
     specifier: ^4.3.0
     version: 4.3.0(vue@3.4.21)
@@ -43,6 +52,9 @@ dependencies:
     version: 0.0.51
 
 devDependencies:
+  '@types/node':
+    specifier: ^20.11.30
+    version: 20.11.30
   '@types/nprogress':
     specifier: ^0.2.3
     version: 0.2.3
@@ -123,7 +135,7 @@ devDependencies:
     version: 5.4.2
   vite:
     specifier: ^5.1.4
-    version: 5.1.5(sass@1.71.1)
+    version: 5.1.5(@types/node@20.11.30)(sass@1.71.1)
   vite-plugin-mock:
     specifier: 2.9.6
     version: 2.9.6(mockjs@1.1.0)(rollup@2.79.1)(vite@5.1.5)
@@ -678,8 +690,8 @@ packages:
     dev: true
     optional: true
 
-  /@socket.io/component-emitter@3.1.0:
-    resolution: {integrity: sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==}
+  /@socket.io/component-emitter@3.1.1:
+    resolution: {integrity: sha512-dzJtaDAAoXx4GCOJpbB2eG/Qj8VDpdwkLsWGzGm+0L7E8/434RyMbAHmk9ubXWVAb9nXmc44jUf8GKqVDiKezg==}
     dev: false
 
   /@sxzz/popperjs-es@2.11.7:
@@ -698,7 +710,7 @@ packages:
   /@types/cors@2.8.17:
     resolution: {integrity: sha512-8CGDvrBj1zgo2qE+oS3pOCyYNqCPryMWY2bGfwA0dcfopWGgxs+78df0Rs3rc9THP4JkOhLsAa+15VdpAqkcUA==}
     dependencies:
-      '@types/node': 20.11.25
+      '@types/node': 20.12.7
     dev: false
 
   /@types/estree@0.0.39:
@@ -727,10 +739,17 @@ packages:
     resolution: {integrity: sha512-SXgrhajHG7boLv6oU93CcmdDm0HYRiceuz6b+7z+/2lCJPTWDv0V5YiwFHT2ejE4bQqgSXQiVPQYPWv7LGsK1g==}
     dev: true
 
-  /@types/node@20.11.25:
-    resolution: {integrity: sha512-TBHyJxk2b7HceLVGFcpAUjsa5zIdsPWlR6XHfyGzd0SFu+/NFgQgMAl96MSDZgQDvJAvV6BKsFOrt6zIL09JDw==}
+  /@types/node@20.11.30:
+    resolution: {integrity: sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==}
     dependencies:
       undici-types: 5.26.5
+    dev: true
+
+  /@types/node@20.12.7:
+    resolution: {integrity: sha512-wq0cICSkRLVaf3UGLMGItu/PtdY7oaXaI/RVU+xliKVOtRna3PRY57ZDfztpDL0n11vfymMUnXv8QwYCO7L1wg==}
+    dependencies:
+      undici-types: 5.26.5
+    dev: false
 
   /@types/nprogress@0.2.3:
     resolution: {integrity: sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==}
@@ -739,7 +758,7 @@ packages:
   /@types/resolve@1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 20.11.25
+      '@types/node': 20.11.30
     dev: true
 
   /@types/semver@7.5.8:
@@ -753,7 +772,7 @@ packages:
   /@types/svgo@2.6.4:
     resolution: {integrity: sha512-l4cmyPEckf8moNYHdJ+4wkHvFxjyW6ulm9l4YGaOxeyBWPhBOT0gvni1InpFPdzx1dKf/2s62qGITwxNWnPQng==}
     dependencies:
-      '@types/node': 20.11.25
+      '@types/node': 20.11.30
     dev: true
 
   /@types/three@0.160.0:
@@ -916,7 +935,7 @@ packages:
       vite: ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.1.5(sass@1.71.1)
+      vite: 5.1.5(@types/node@20.11.30)(sass@1.71.1)
       vue: 3.4.21(typescript@5.4.2)
     dev: true
 
@@ -1223,8 +1242,8 @@ packages:
     resolution: {integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==}
     dev: true
 
-  /bim-fragment@1.4.0(three@0.160.1):
-    resolution: {integrity: sha512-++hd1Ulx5Nq4BfZzWz2T4Ke8H8Illo9Q+1ASzlJwiQVOpxO/ae93kpBZdCWZPgCypWo10GgvG7Z4LD3kDEl/fA==}
+  /bim-fragment@1.4.1(three@0.160.1):
+    resolution: {integrity: sha512-ZrgFB34DdztljYm5NdcHVGOzF9fpmFhpk1sa6xmWqQrenZQ7MVrouguvrWMHH/x8YOsaDW1woCwUUWK4O96Osw==}
     peerDependencies:
       three: ^0.160.1
     dependencies:
@@ -1402,6 +1421,10 @@ packages:
       isobject: 3.0.1
       static-extend: 0.1.2
     dev: true
+
+  /client-zip@2.4.4:
+    resolution: {integrity: sha512-Ixk40BUI7VvNDxW7SCze20GbCuC+gjP4tGkXUpo6/W96bOf96HSed6cOQVeUOIe74SJAG/dIrBr7AtR4xBVnsA==}
+    dev: false
 
   /cliui@7.0.4:
     resolution: {integrity: sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ==}
@@ -1587,6 +1610,10 @@ packages:
   /date-format@4.0.14:
     resolution: {integrity: sha512-39BOQLs9ZjKh0/patS9nrT8wc3ioX3/eA/zgbKNopnF2wCqJEoxywwwElATYvRsXdnOxA/OQeQoFZ3rFjVajhg==}
     engines: {node: '>=4.0'}
+    dev: false
+
+  /dayjs@1.10.7:
+    resolution: {integrity: sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==}
     dev: false
 
   /dayjs@1.11.10:
@@ -1796,6 +1823,13 @@ packages:
     resolution: {integrity: sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==}
     dev: false
 
+  /echarts@5.5.0:
+    resolution: {integrity: sha512-rNYnNCzqDAPCr4m/fqyUFv7fD9qIsd50S6GDFgO1DxZhncCsNsG7IfUlAlvZe5oSEQxtsjnHiUuppzccry93Xw==}
+    dependencies:
+      tslib: 2.3.0
+      zrender: 5.5.0
+    dev: false
+
   /ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
@@ -1847,7 +1881,7 @@ packages:
     dependencies:
       '@types/cookie': 0.4.1
       '@types/cors': 2.8.17
-      '@types/node': 20.11.25
+      '@types/node': 20.12.7
       accepts: 1.3.8
       base64id: 2.0.0
       cookie: 0.4.2
@@ -2290,6 +2324,16 @@ packages:
         optional: true
     dev: false
 
+  /follow-redirects@1.15.6:
+    resolution: {integrity: sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: false
+
   /for-in@1.0.2:
     resolution: {integrity: sha512-7EwmXrOjyL+ChxMhmG5lnW9MPt1aIeZEwKhQzoBUdTV0N3zuwWDZYVJatDvZ2OyzPUvdIAZDsCetk3coyMfcnQ==}
     engines: {node: '>=0.10.0'}
@@ -2559,7 +2603,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.15.5
+      follow-redirects: 1.15.6
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
@@ -2855,7 +2899,7 @@ packages:
       qjobs: 1.2.0
       range-parser: 1.2.1
       rimraf: 3.0.2
-      socket.io: 4.7.4
+      socket.io: 4.7.5
       source-map: 0.6.1
       tmp: 0.2.3
       ua-parser-js: 0.7.37
@@ -3251,15 +3295,15 @@ packages:
       three: 0.152.2
     dev: false
 
-  /openbim-components@1.4.15(bim-fragment@1.4.0)(karma@6.4.3)(three@0.160.1)(web-ifc@0.0.51):
-    resolution: {integrity: sha512-dzo06RHCDtyuDCPhf0wtFipkWoUcGAQ2tHJffEG8UQxq0Y6lZVPvZK/j4lseSyTXP2moHGpK2h9BiVnGEhBM8A==}
+  /openbim-components@1.4.5(bim-fragment@1.4.1)(karma@6.4.3)(three@0.160.1)(web-ifc@0.0.51):
+    resolution: {integrity: sha512-/zZf7E4WQ9828GD2KRwUO6Zx7Jzu51AQD94dBpwCyQI5mvkZ6AK6kPsp0/6KfaCmtqFdpZzIV/EbRboOIeeoIg==}
     peerDependencies:
       bim-fragment: 1.4.0
       three: ^0.160.1
       web-ifc: 0.0.51
     dependencies:
       '@popperjs/core': 2.11.8
-      bim-fragment: 1.4.0(three@0.160.1)
+      bim-fragment: 1.4.1(three@0.160.1)
       camera-controls: 2.7.3(three@0.160.1)
       dexie: 3.2.6(karma@6.4.3)
       dxf-writer: 1.18.4
@@ -3894,14 +3938,14 @@ packages:
     resolution: {integrity: sha512-/GbIKmo8ioc+NIWIhwdecY0ge+qVBSMdgxGygevmdHj24bsfgtCmcUUcQ5ZzcylGFHsN3k4HB4Cgkl96KVnuew==}
     engines: {node: '>=10.0.0'}
     dependencies:
-      '@socket.io/component-emitter': 3.1.0
+      '@socket.io/component-emitter': 3.1.1
       debug: 4.3.4
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /socket.io@4.7.4:
-    resolution: {integrity: sha512-DcotgfP1Zg9iP/dH9zvAQcWrE0TtbMVwXmlV4T4mqsvY+gw+LqUGPfx2AoVyRk0FLME+GQhufDMyacFmw7ksqw==}
+  /socket.io@4.7.5:
+    resolution: {integrity: sha512-DmeAkF6cwM9jSfmp6Dr/5/mfMwb5Z5qRrSXLpo3Fq5SqyU8CMF15jIN4ZhfSwu35ksM1qmHZDQ/DK5XTccSTvA==}
     engines: {node: '>=10.2.0'}
     dependencies:
       accepts: 1.3.8
@@ -4395,6 +4439,10 @@ packages:
       typescript: 5.4.2
     dev: true
 
+  /tslib@2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
+    dev: false
+
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
     dev: true
@@ -4519,7 +4567,7 @@ packages:
       fast-glob: 3.3.2
       mockjs: 1.1.0
       path-to-regexp: 6.2.1
-      vite: 5.1.5(sass@1.71.1)
+      vite: 5.1.5(@types/node@20.11.30)(sass@1.71.1)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -4538,12 +4586,12 @@ packages:
       pathe: 0.2.0
       svg-baker: 1.7.0
       svgo: 2.8.0
-      vite: 5.1.5(sass@1.71.1)
+      vite: 5.1.5(@types/node@20.11.30)(sass@1.71.1)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite@5.1.5(sass@1.71.1):
+  /vite@5.1.5(@types/node@20.11.30)(sass@1.71.1):
     resolution: {integrity: sha512-BdN1xh0Of/oQafhU+FvopafUp6WaYenLU/NFoL5WyJL++GxkNfieKzBhM24H3HVsPQrlAqB7iJYTHabzaRed5Q==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -4571,6 +4619,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 20.11.30
       esbuild: 0.19.12
       postcss: 8.4.35
       rollup: 4.12.1
@@ -4617,13 +4666,13 @@ packages:
       - supports-color
     dev: true
 
-  /vue-ifc-viewer@1.0.2(openbim-components@1.4.15)(vue@3.4.21):
+  /vue-ifc-viewer@1.0.2(openbim-components@1.4.5)(vue@3.4.21):
     resolution: {integrity: sha512-ZpyeVlLzg2XyNI2Ff1aoXsLxha8jjhBq8oHRcIEME0Yj2UJt444r/jyy9xYgZ4lWVWkb+KzeowzoIRlx9ofg4w==}
     peerDependencies:
       openbim-components: '>=1.3.1'
       vue: '>=3.2.25'
     dependencies:
-      openbim-components: 1.4.15(bim-fragment@1.4.0)(karma@6.4.3)(three@0.160.1)(web-ifc@0.0.51)
+      openbim-components: 1.4.5(bim-fragment@1.4.1)(karma@6.4.3)(three@0.160.1)(web-ifc@0.0.51)
       vue: 3.4.21(typescript@5.4.2)
     dev: false
 
@@ -4758,3 +4807,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zrender@5.5.0:
+    resolution: {integrity: sha512-O3MilSi/9mwoovx77m6ROZM7sXShR/O/JIanvzTwjN3FORfLSr81PsUGd7jlaYOeds9d8tw82oP44+3YucVo+w==}
+    dependencies:
+      tslib: 2.3.0
+    dev: false
