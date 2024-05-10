@@ -42,7 +42,7 @@ request.interceptors.response.use((response) => {
     default:
       msg = "无网络";
   }
-  //我们后端会把状态码跟信息都返回，前端只要看状态码是否为200就行
+  //后端会把状态码跟信息都返回，前端只要看状态码是否为200就行
   ElMessage({
     type: 'error',
     message: msg

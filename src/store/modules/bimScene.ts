@@ -1,7 +1,11 @@
 //创建小仓库
 import {defineStore} from 'pinia'
 
-//本仓库用于bim组件之间的通信
+/**
+ * 本仓库用于bim组件之间的通信
+ *
+ */
+
 export const useBimStore = defineStore('bim',{
   //数据
   state: () => ({

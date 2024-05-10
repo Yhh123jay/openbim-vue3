@@ -8,6 +8,7 @@ let layoutStore = useLayoutStore()
 </script>
 
 <template>
+<!--  动态生成菜单，根据路由生成-->
       <!--菜单组件-->
       <el-menu background-color="#545c64" text-color="white" active-text-color="orange"
                :collapse="layoutStore.isFold" :default-active="$route.path" router>
@@ -37,6 +38,10 @@ let layoutStore = useLayoutStore()
             <span slot="title">日志管理</span>
           </el-menu-item>
         </el-sub-menu>
+        <el-menu-item index="/file">
+          <el-icon><OfficeBuilding /></el-icon>
+          <span slot="title">文档管理</span>
+        </el-menu-item>
       </el-menu>
 </template>
 

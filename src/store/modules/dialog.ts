@@ -1,11 +1,10 @@
 import { defineStore } from "pinia";
 
 /**
- * Simulate a login
- * @param {string} a
- * @param {string} p
+ *一个用于管理弹窗的仓库
+ * 用于管理弹窗的显示隐藏，弹窗的位置，弹窗的内容
+ * 弹窗组件在views/bimViewer/components/Dialog.vue
  */
-
 export const useDialogStore: any = defineStore({
   id: "Dialog",
   state: () => ({

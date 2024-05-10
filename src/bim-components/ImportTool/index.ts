@@ -70,7 +70,7 @@ export class ImportTool extends OBC.Component<null> implements OBC.UI, OBC.Dispo
     const data = await file.arrayBuffer();
     const buffer = new Uint8Array(data);
     console.log(buffer)
-    const model = await ifcLoader.load(buffer, true);
+    const model = await ifcLoader.load(buffer);
     scene.add(model)
   }
   get() {

@@ -1,4 +1,9 @@
 import * as echarts from "echarts";
+import {getSensorData} from "@/api/sensor";
+import { SensorResult } from '@/api/sensor/type.ts'
+
+const result: SensorResult = await getSensorData("AI5-01")
+//console.log("result",result)
 
 export const option1 = () => {
     const chartData = {
@@ -184,3 +189,70 @@ export const option2 = () => {
     };
     return options;
 };
+
+export const option3 = () => {
+    //配置echarts的option，使用上面返回的result数据
+    const xData = result.data.map((item) => {
+        //时间戳转为时间格式
+        let timestamp = new Date(item.timestamp).toLocaleTimeString();
+        return timestamp;
+    }
+
+    );
+    const yData = result.data.map((item) => item.res_value);
+    //配置echarts的option，为了方便查看，这里配置了一个折线图,高度为300px，宽度为300px
+    const options = {
+        grid: {
+            left: "3%",
+            top: "3%",
+            right: "3%",
+            bottom: "20%",
+            containLabel: true,
+        },
+        tooltip: {
+            trigger: "axis",
+            axisPointer: {
+                type: "cross",
+                label: {
+                    backgroundColor: "#6a7985",
+                },
+            },
+        },
+        xAxis: {
+            type: "category",
+            data: xData,
+            axisLabel: {
+                fontSize: 16,
+                show: true
+            },
+            axisLine: {
+                lineStyle: {
+                    color: "#ccc",
+                },
+            },
+        },
+        yAxis: {
+            type: "value",
+            axisLine: {
+                lineStyle: {
+                    color: "#ccc",
+                },
+            },
+        },
+        series: [
+            {
+                data: yData,
+                type: "line",
+                smooth: true,
+                itemStyle: {
+                    color: "#14c8d4",
+                },
+                lineStyle: {
+                    color: "#14c8d4",
+                },
+            },
+        ],
+    };
+
+    return options;
+}

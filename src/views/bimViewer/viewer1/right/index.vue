@@ -1,6 +1,6 @@
 <template>
   <div class="right-container">
-    <LeaseTitle>排水管网</LeaseTitle>
+    <LeaseTitle>传感器</LeaseTitle>
       <V3Echarts :options="option1()" :height="220" :top="30" class="paishui"/>
     <LeaseTitle>源头排查</LeaseTitle>
     <!--    <V3Echarts :options="option1()" height="230"/>-->
@@ -16,7 +16,6 @@
           <div class="table-body">
             <div class="table-body-warp">
               <div class="row" v-for="(item,index) in self.tableList" :key="index">
-
                 <div class="col">{{ item.name }}</div>
                 <div class="col">{{ item.time }}</div>
                 <div class="col">{{ item.index }}</div>
@@ -31,8 +30,8 @@
         </div>
       </div>
     
-    <LeaseTitle>资源投入</LeaseTitle>
-      <V3Echarts :options="option2()" :height="280" :top="30"/>
+    <LeaseTitle>传感数据-应变</LeaseTitle>
+      <V3Echarts :options="option3()" :height="280" :top="30"/>
   </div>
 </template>
 
@@ -40,9 +39,10 @@
 import {defineComponent, onMounted, onUnmounted, reactive, toRefs} from "vue";
 import LeaseTitle from '@/components/LeaseTitle/index.vue'
 import V3Echarts from '@/components/V3Echarts/index.vue'
-import {option1, option2} from './chartOpt'
+import { option1, option2, option3 } from './chartOpt'
 // import {startMarquee} from "@/utils";
     const colors: string[] = ['rgb(159, 210, 255)', 'rgb(252, 111, 55)']
+    //表格数据
     const self = reactive({
       tableList:  [
         {

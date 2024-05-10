@@ -42,3 +42,15 @@
 新建views，里面存放路由组件
 
 新建router，通过vue-router实现路由配置
+
+### 2.2.5 集成pinia
+
+新建store文件夹，里面存放pinia的store文件
+
+### 2.2.6 集成openBIM组件库
+
+### 2.2.7 集成echarts
+
+## 2.3 项目目录结构
+
+```

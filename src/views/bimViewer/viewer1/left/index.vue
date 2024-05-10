@@ -92,15 +92,15 @@ const self = reactive({
 });
 const leftArr = [
   {
-    name: "累计治理总量",
+    name: "累计长度",
     value: 5000,
     unit: "L",
     imgUrl: "/assets/images/watershed/icon_Release@2x(1).png",
   },
   {
-    name: "管网总长度",
-    value: 900,
-    unit: "km",
+    name: "斜拉索数量",
+    value: 80,
+    unit: "根",
     imgUrl: "/assets/images/watershed/icon_warning@2x(2).png",
   },
   {

@@ -42,17 +42,19 @@ export const viewer: ViewerSetup = async (viewer: OBC.Components, container: HTM
   const grid = new OBC.SimpleGrid(viewer, new THREE.Color(0x000000))
   postproduction.customEffects.excludedMeshes.push(grid.get())
 
+  // FragmentBoundingBox
+  const fragmentBoundingBox = new OBC.FragmentBoundingBox(viewer)
+  const controls = cameraComponent.controls
 
   // Load IFC
   const ifcLoader = new OBC.FragmentIfcLoader(viewer)
   await ifcLoader.setup()
   ifcLoader.settings.webIfc.COORDINATE_TO_ORIGIN = true;
   ifcLoader.settings.webIfc.OPTIMIZE_PROFILES = true;
-  const highlighter = new OBC.FragmentHighlighter(viewer)
-  await highlighter.setup()
 
   //使用Fragment Manager导入fragments
   const fragmentManager = viewer.tools.get(FragmentManager)
+
   async function loadFragments() {
     console.log(fragmentManager.components === viewer)
     console.log(fragmentManager.groups.length)
@@ -60,39 +62,127 @@ export const viewer: ViewerSetup = async (viewer: OBC.Components, container: HTM
     const file = await fetch("/assets/models/small.frag");
     const data = await file.arrayBuffer();
     const buffer = new Uint8Array(data);
-    const group = await fragmentManager.load(buffer,true);
+    const group = await fragmentManager.load(buffer);
     console.log(fragmentManager.groups.length)
     console.log(group)
+    const properties = await fetch("/assets/models/small.json")
+    console.log(properties)
+    const props = await properties.json()
+    group.setLocalProperties(props)
   }
 
   //ScreenCuller
-  const culler = new OBC.ScreenCuller(viewer)
-  await culler.setup()
-  cameraComponent.controls.addEventListener("sleep", () => culler.elements.needsUpdate = true)
+  //const culler = new OBC.ScreenCuller(viewer)
+  //await culler.setup()
+  //cameraComponent.controls.addEventListener("sleep", () => culler.elements.needsUpdate = true)
+
+  // Highlighter
+  const highlighter = new OBC.FragmentHighlighter(viewer)
+  await highlighter.setup()
+  postproduction.customEffects.outlineEnabled = true
+  highlighter.outlineEnabled = true
+
   //IfcPropertiesProcessor
   const propertiesProcessor = new OBC.IfcPropertiesProcessor(viewer)
   highlighter.events.select.onClear.add(() => {
     propertiesProcessor.cleanPropertiesList()
   })
 
+  const zoomButton = new OBC.Button(viewer)
+  zoomButton.materialIcon = "zoom_in_map"
+  zoomButton.tooltip = "Zoom to building"
+
+  //直接在代码中加载模型
+  // if(fragmentManager.groups.length) return;
+  // const file = await fetch("/assets/models/small.frag");
+  // const data = await file.arrayBuffer();
+  // const buffer = new Uint8Array(data);
+  // const model = await fragmentManager.load(buffer);
+  // console.log(fragmentManager.groups.length)
+  // console.log(model)
+  // const properties = await fetch("/assets/models/small.json")
+  // console.log(properties)
+  // const props = await properties.json()
+  // model.setLocalProperties(props)
+  // //使用fragmentBoundingBox
+  // fragmentBoundingBox.add(model)
+  // const bbox = fragmentBoundingBox.getMesh();
+  // fragmentBoundingBox.reset()
+  // zoomButton.onClick.add(() => {
+  //   controls.fitToSphere(bbox,true)
+  // })
+  // await propertiesProcessor.process(model)
+  // highlighter.events.select.onHighlight.add((selection) => {
+  //   console.log(selection)
+  //   const fragmentID = Object.keys(selection)[0]
+  //   const expressID = Number([...selection[fragmentID]][0])
+  //   console.log("Selected element: ", expressID)
+  //   const fragment = fragmentManager.list[fragmentID]
+  //   if(fragment.group){
+  //     propertiesProcessor.renderProperties(model, expressID)
+  //   }
+  // })
+  // await highlighter.updateHighlight()
+
+
   ifcLoader.onIfcLoaded.add(async (model) => {
-    for (const fragment of model.items) { culler.elements.add(fragment.mesh) }
+    //添加到culler,经过测试，这个方法会导致有些模型无法显示，建议关闭
+    //for (const fragment of model.items){culler.elements.add(fragment.mesh)}
+    //使用fragmentBoundingBox
+    fragmentBoundingBox.add(model)
+    const bbox = fragmentBoundingBox.getMesh();
+    fragmentBoundingBox.reset()
+    zoomButton.onClick.add(() => {
+      controls.fitToSphere(bbox,true)
+    })
+
+    //属性处理器
     await propertiesProcessor.process(model)
+    //选中高亮，并展示属性
     highlighter.events.select.onHighlight.add((selection) => {
+      console.log(selection)
       const fragmentID = Object.keys(selection)[0]
       const expressID = Number([...selection[fragmentID]][0])
       console.log("Selected element: ", expressID)
       propertiesProcessor.renderProperties(model, expressID)
     })
     await highlighter.updateHighlight()
-    culler.elements.needsUpdate = true
+    //culler.elements.needsUpdate = true
   })
+  fragmentManager.onFragmentsLoaded.add(async (model) => {
+    console.log(model)
+    //使用fragmentBoundingBox
+    fragmentBoundingBox.add(model)
+    const bbox = fragmentBoundingBox.getMesh();
+    fragmentBoundingBox.reset()
+    zoomButton.onClick.add(() => {
+      controls.fitToSphere(bbox,true)
+    })
+
+    // 检查properties是否已加载
+
+    await propertiesProcessor.process(model)
+
+    highlighter.events.select.onHighlight.add((selection) => {
+      console.log(selection)
+      const fragmentID = Object.keys(selection)[0]
+      const expressID = Number([...selection[fragmentID]][0])
+      console.log("Selected element: ", expressID)
+      const fragment = fragmentManager.list[fragmentID]
+      if(fragment.group){
+        propertiesProcessor.renderProperties(model, expressID)
+      }
+    })
+    await highlighter.updateHighlight()
+  })
+
   //ExampleTool
   const exampleTool = new ExampleTool(viewer)
   await exampleTool.setup({
     message: "Hi there from ExampleTool!",
     requiredSetting: 123
   })
+
   //ImportTool
   const importTool = new ImportTool(viewer)
   await importTool.setup({
@@ -100,6 +190,7 @@ export const viewer: ViewerSetup = async (viewer: OBC.Components, container: HTM
     requiredSetting: 123
   })
 
+  //使用fragmentManager导入模型
   const loadButton = new OBC.Button(viewer);
   loadButton.materialIcon = "download";
   loadButton.tooltip = "Load fragments";
@@ -113,7 +204,8 @@ export const viewer: ViewerSetup = async (viewer: OBC.Components, container: HTM
     propertiesProcessor.uiElement.get("main"),
     exampleTool.uiElement.get("activationBtn"),
     importTool.uiElement.get("activationBtn"),
-    loadButton
+    loadButton,
+    zoomButton
   )
   viewer.ui.addToolbar(mainToolbar)
 }

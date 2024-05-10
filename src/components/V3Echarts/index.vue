@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts" setup>
+// Vue3版本的echarts组件
 import {markRaw, nextTick, onMounted, onUnmounted, reactive, ref, watch,} from "vue";
 import * as charts from "echarts";
 // export default defineComponent({
@@ -50,6 +51,7 @@ onMounted(() => {
 const changeEcharts = (options: any) => {
   if (!Aecharts.value) return
   Aecharts.value.setOption(options);
+  // 如果是第一次加载，初始化该组件
   if (props.isFirst) {
     let index = 0;
     Aecharts.value.dispatchAction({

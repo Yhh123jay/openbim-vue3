@@ -1,4 +1,4 @@
-<!-- header -->
+<!-- header 页面切换组件-->
 <template>
     <div class="header">
         <div class="titleName">BIM模型展示</div>
@@ -58,7 +58,7 @@ const linkList: any = ref([
         path: '/bimViewer/viewer3'
     }
 ])
-
+//从localStorage中获取当前页面的路径，如果没有则默认为首页
 const pathValue = localStorage.getItem('pathName') ? localStorage.getItem('pathName') : '/home'
 const PagePath = ref(pathValue)
 const handleLinkClick = (item: typeof linkList.value[0]) => {
@@ -69,7 +69,6 @@ const handleLinkClick = (item: typeof linkList.value[0]) => {
     PagePath.value = item.path
     localStorage.setItem('pathName', PagePath.value as string)
 }
-const route = useRoute()
 
 </script>
 <style lang="scss" scoped>

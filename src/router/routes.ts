@@ -14,6 +14,14 @@ export const constantRoute = [
           title: '首页'
         }
       },
+      {
+        path:'/file',
+        component: () => import('@/views/fileSystem/index.vue'),
+        name: 'file',
+        meta: {
+          title: '文件管理'
+        }
+      },
     ]
   },
   {
@@ -77,6 +85,7 @@ export const constantRoute = [
       },
     ]
   },
+
   {
     path: '/login',
     component: () => import('@/views/login/index.vue'),

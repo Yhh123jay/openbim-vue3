@@ -1,4 +1,4 @@
-<!-- right_box -->
+<!-- right_box，蓝色的背景盒子 -->
 <template>
   <transition
     appear
@@ -25,7 +25,7 @@
 .right_box {
   position: absolute;
   @include Width(469);
-  @include wHeight(1080);
+  @include wHeight(920);
   @include Top(0);
   @include Right(0);
  // background-color: rgba($color: #000, $alpha: 0.45);
