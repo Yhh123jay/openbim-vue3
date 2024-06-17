@@ -38,21 +38,21 @@ const linkList: any = ref([
     },
     {
         id: 2,
-        linkName: 'viewer1',
+        linkName: '总体概况',
         active: '/assets/images/link/menu3_游客分析2.png',
         icon: '/assets/images/link/menu3_游客分析@2x.png',
         path: '/bimViewer/viewer1'
     },
     {
         id: 3,
-        linkName: 'viewer2',
+        linkName: '施工阶段',
         active: '/assets/images/link/menu3_游客分析2.png',
         icon: '/assets/images/link/menu3_游客分析@2x.png',
         path: '/bimViewer/viewer2'
     },
     {
         id: 4,
-        linkName: 'viewer3',
+        linkName: '养护阶段',
         active: '/assets/images/link/menu3_游客分析2.png',
         icon: '/assets/images/link/menu3_游客分析@2x.png',
         path: '/bimViewer/viewer3'

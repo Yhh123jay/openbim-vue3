@@ -3,6 +3,7 @@ import SvgIcon from './SvgIcon/index.vue';
 // import Icon from './Icon/index.vue';
 import V3Echarts from '@/components/V3Echarts/index.vue'
 import LeaseTitle from '@/components/LeaseTitle/index.vue'
+
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 import type { App, Component } from 'vue';

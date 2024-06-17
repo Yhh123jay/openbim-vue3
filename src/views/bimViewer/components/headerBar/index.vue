@@ -85,12 +85,6 @@ export default defineComponent({
     const self = reactive({
       activeIndex: -1,
     });
-    // onMounted(() => {
-    //   document.querySelector(".header")?.appendChild(headerBar.value);
-    // });
-    // onBeforeUnmount(() => {
-    //   document.querySelector(".header")?.removeChild(headerBar.value);
-    // });
 
     return {
       headerBar,
@@ -104,21 +98,21 @@ export default defineComponent({
 <style scoped lang="scss">
 .header-bar {
   position: fixed;
-  @include Bottom(30);
+  @include Bottom(100);
   // width: 100%;
   // @include wHeight(85);
   font-family: Oppo, serif;
   @include FontSize(14);
   @include wHeight(80);
   // @include Width(1529);
-  @include Left(550);
+  @include Left(500);
   z-index: 999;
   .bar-box {
     display: flex;
+    flex-direction: column;
     align-items: center;
     // justify-content: center;
     @include MarginTop(25);
-    // @include Width(1346.76);
     position: absolute;
     left: 0;
     .bar-item {
@@ -129,7 +123,7 @@ export default defineComponent({
       background: url("@/assets/images/基础/menu2_single_bg_choosen@2x.png")
       no-repeat;
       background-size: 100% 100%;
-      @include Width(118.39);
+      @include Width(120);
       @include wHeight(30);
       text-align: center;
       @include LineHeight(30);
@@ -137,6 +131,7 @@ export default defineComponent({
       cursor: pointer;
       transition: all 0.3s;
       @include MarginRight(16);
+      @include MarginBottom(16);
       position: relative;
       text-align: center;
       &:last-child {

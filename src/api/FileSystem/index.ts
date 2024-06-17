@@ -15,6 +15,8 @@ enum FileSystemApi {
     rmdir = '/file/rmdir',
     //读取文件内容
     readFile = '/file/readFile',
+    //读取文件内容byte
+    readFileByte = '/file/readFileByte',
     //文件或文件夹重命名
     renameFile = '/file/renameFile',
     //上传本地文件
@@ -125,6 +127,19 @@ export function readFile(filePath: string): Promise<any>{
         url: FileSystemApi.readFile,
         method: 'get',
         params: {filePath}
+    })
+}
+
+/**
+ * 读取文件内容byte:get
+ * 通过response返回文件流
+ */
+export function readFileByte(filePath: string): Promise<any>{
+    return request({
+        url: FileSystemApi.readFileByte,
+        method: 'get',
+        params: {filePath},
+        responseType: 'blob'
     })
 }
 

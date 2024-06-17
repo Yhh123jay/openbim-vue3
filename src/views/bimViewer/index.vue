@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import IFCViewer from 'vue-ifc-viewer'
-  import Sidebar from "@/components/Sidebar.vue"
+  //import Sidebar from "@/components/Sidebar.vue"
   import TopRight from "@/views/bimViewer/components/topRight/index.vue"
   import Header from "@/views/bimViewer/components/header/index.vue"
 </script>
@@ -37,19 +37,7 @@
   background-color: #fff;
   cursor: pointer;
 }
-//.header{
-//  position: absolute;
-//  top: 0;
-//  left: 0;
-//  width: 100%;
-//  height: 80px;
-//  background-color: rgba(0, 0, 0, 0.5);
-//  z-index: 999;
-//  display: flex;
-//  justify-content: space-between;
-//  align-items: center;
-//  padding: 0 20px;
-//}
+
 .top-right{
   position: absolute;
   top: 0;

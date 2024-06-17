@@ -1,3 +1,4 @@
+//导入ifc模型
 import * as OBC from "openbim-components"
 import { FragmentIfcLoader } from 'openbim-components'
 export interface ImportToolConfig {

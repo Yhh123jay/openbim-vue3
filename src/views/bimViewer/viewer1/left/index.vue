@@ -14,23 +14,23 @@
         </div>
       </template>
     </div>
-    <LeaseTitle>河道治理</LeaseTitle>
+    <LeaseTitle>环境监测</LeaseTitle>
     <!--    <V3Echarts :options="option1()" height="230"/>-->
     <div class="panel-center">
       <div class="panel-content">
         <div class="left-data">
           <div class="data-wrap">
             <div class="title">
-              <img src="@/assets/img/河道长度.png" alt="" /> 河道长度
+              <img src="@/assets/img/河道长度.png" alt="" /> 温度
             </div>
             <div class="num">
-              500
-              <span class="dw">m</span>
+              37
+              <span class="dw">°C</span>
             </div>
           </div>
           <div class="data-wrap">
             <div class="title">
-              <img src="@/assets/img/anhan.png" alt="" /> 暗涵长度
+              <img src="@/assets/img/anhan.png" alt="" /> 湿度
             </div>
             <div class="num">
               500
@@ -40,13 +40,13 @@
         </div>
         <div class="line"></div>
         <div class="right-data">
-          <span>上口测量：<b> 444Km</b> </span>
-          <span>排口调查：<b>252个</b> </span>
-          <span>成功数量：<b>600处</b> </span>
+          <span>风速风向测量：<b> 44m/s</b> </span>
+          <span>地震动：<b>0.52g</b> </span>
+          <span>雨量：<b>600mm</b> </span>
         </div>
       </div>
     </div>
-    <V3Echarts :options="option2()" :height="290" :top="40"/>
+    <V3Echarts :options="option1()" :height="290" :top="40"/>
   </div>
 </template>
 

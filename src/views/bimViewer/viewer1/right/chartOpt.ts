@@ -256,3 +256,52 @@ export const option3 = () => {
 
     return options;
 }
+
+//圆饼图，显示设备统计状态
+export const option4 = () => {
+    const data = [
+        { value: 335, name: "正常" },
+        { value: 310, name: "异常" },
+        { value: 234, name: "未知" },
+    ];
+    const options = {
+        tooltip: {
+            trigger: "item",
+            formatter: "{a} <br/>{b}: {c} ({d}%)",
+        },
+        legend: {
+            orient: "vertical",
+            right: "5%",
+            top: "center",
+            textStyle: {
+                color: "rgba(255, 255, 255, 0.85)",
+                fontSize: 16,
+            },
+            data: ["正常", "异常", "未知"],
+        },
+        series: [
+            {
+                name: "设备状态",
+                type: "pie",
+                radius: ["50%", "70%"],
+                avoidLabelOverlap: false,
+                label: {
+                    show: false,
+                    position: "center",
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: "30",
+                        fontWeight: "bold",
+                    },
+                },
+                labelLine: {
+                    show: false,
+                },
+                data: data,
+            },
+        ],
+    };
+    return options;
+}

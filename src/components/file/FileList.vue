@@ -73,7 +73,11 @@
         label="大小"
         align="right"
         show-overflow-tooltip
-      ></el-table-column>
+      >
+        <template #default="scope">
+          {{ scope.row.type === '文件' ? scope.row.size : ''}}
+        </template>
+      </el-table-column>
       <el-table-column
         width="200"
         prop="createTime"
@@ -125,6 +129,7 @@ import {
   getPathInfo,
   rmdir,
   readFile,
+  readFileByte,
   renameFile,
   uploadFileFromLocal,
   downloadFileFromLocal,
@@ -189,6 +194,7 @@ onMounted(() => {
   refreshFileList();
 })
 
+// 文件操作函数
 // 跳转到指定路径
 const toDirectionPath = () => {
   //查询当前路径下的文件
@@ -298,22 +304,45 @@ const delete_file = (file) => {
   });
 };
 // 下载文件
-const download_file = (file) => {
-  // {name: '1.csv', type: '文件', size: 0, createTime: '2024-05-09 21:54:03', path: '/data/1.csv'}
+const download_file = async (file) => {
   const fileName = file.name;
-  // 下载文件，这里不调用downFromLocal方法，因为会下载到后端服务器，直接读取文件流下载到本地
-  // 使用readFile方法文件会损坏
-  readFile(file.path)
-    .then(resp => {
-      const url = window.URL.createObjectURL(new Blob([resp.data]));
+  // {name: '1.csv', type: '文件', size: 0, createTime: '2024-05-09 21:54:03', path: '/data/1.csv'}
+  try {
+    const resp = await readFileByte(file.path);
+    console.log(resp);
+
+    // 使用FileReader读取Blob数据
+    const reader = new FileReader();
+    reader.onload = () => {
+      // 解析JSON
+      const responseData = JSON.parse(reader.result);
+      const dataArray = responseData.data; // 假设数据在resp.data中
+      //转为二进制数据
+      const arrayBuffer = Uint8Array.from(dataArray).buffer;
+      // 创建Blob对象
+      const blob = new Blob([dataArray], { type: 'application/octet-stream' });
+
+      // 创建URL
+      const url = window.URL.createObjectURL(blob);
+
+      // 创建下载链接
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', fileName);
+      link.setAttribute('download', fileName); // 设置下载文件名
       document.body.appendChild(link);
+
+      // 触发下载
       link.click();
-    }).catch(error => {
-      console.error(error);
-    });
+
+      // 清理
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    };
+    // 读取Blob数据
+    reader.readAsText(resp);
+  } catch (error) {
+    console.error(error);
+  }
 };
 // 复制文件
 const copy_file = (file) => {

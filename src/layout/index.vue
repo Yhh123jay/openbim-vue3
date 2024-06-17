@@ -3,10 +3,13 @@
   import TabBar from '@/layout/tabBar/index.vue'
   import Logo from '@/layout/logo/index.vue'
   import useLayoutStore from '@/store/modules/layout.ts'
+  import useUserStore from '@/store/modules/user.ts'
   import { nextTick, ref, watch } from 'vue'
 
+  let userStore = useUserStore()
   // 刷新页面方法
   let layoutStore = useLayoutStore()
+
   let flag = ref(true)
   watch(()=> layoutStore.refresh,
     ()=>{
@@ -30,7 +33,7 @@
       <div class="layout_menu" :class="{ isFold: layoutStore.isFold }">
         <el-scrollbar class="scrollbar">
         <!--菜单组件-->
-          <Menu></Menu>
+          <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-scrollbar>
       </div>
       <!--右侧内容-->
@@ -81,7 +84,7 @@
       }
       .layout_content {
         flex: 1;
-        background-color: grey;
+        background-color: white;
         //圆角
         border-radius: 5px;
       }

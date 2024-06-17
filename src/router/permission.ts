@@ -15,6 +15,7 @@ let userStore = useUserStore(pinia)
 router.beforeEach(async (to, from, next) => {
   nprogress.start()
   // 路由的放行函数
+  if(to.path == '/file/readFileToByte') next()
   let token = userStore.token
   // 在路由守卫中发送请求获取用户信息
   let userInfo = userStore.userInfo

@@ -1,8 +1,10 @@
 <template>
   <div class="right-container">
-    <LeaseTitle>传感器</LeaseTitle>
-      <V3Echarts :options="option1()" :height="220" :top="30" class="paishui"/>
-    <LeaseTitle>源头排查</LeaseTitle>
+    <LeaseTitle>实时监测数据</LeaseTitle>
+    <V3Echarts :options="option3()" :height="280" :top="30"/>
+    <LeaseTitle>设备状态</LeaseTitle>
+      <V3Echarts :options="option4()" :height="220" :top="30" class="paishui"/>
+    <LeaseTitle>设备列表</LeaseTitle>
     <!--    <V3Echarts :options="option1()" height="230"/>-->
       <div class="details">
         <div class="table-box">
@@ -11,7 +13,7 @@
             <div class="head-item">更新日期</div>
             <!--          <div class="head-item">起飞</div>-->
             <div class="head-item">数量</div>
-            <div class="head-item">处理状况</div>
+            <div class="head-item">设备状况</div>
           </div>
           <div class="table-body">
             <div class="table-body-warp">
@@ -29,9 +31,7 @@
           </div>
         </div>
       </div>
-    
-    <LeaseTitle>传感数据-应变</LeaseTitle>
-      <V3Echarts :options="option3()" :height="280" :top="30"/>
+
   </div>
 </template>
 
@@ -39,7 +39,7 @@
 import {defineComponent, onMounted, onUnmounted, reactive, toRefs} from "vue";
 import LeaseTitle from '@/components/LeaseTitle/index.vue'
 import V3Echarts from '@/components/V3Echarts/index.vue'
-import { option1, option2, option3 } from './chartOpt'
+import { option1, option2, option3,option4 } from './chartOpt'
 // import {startMarquee} from "@/utils";
     const colors: string[] = ['rgb(159, 210, 255)', 'rgb(252, 111, 55)']
     //表格数据

@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import GanttChart from '@/components/GanttChart/index.vue'
 
 </script>
 
 <template>
-<h1>日志管理</h1>
+  <gantt-chart></gantt-chart>
 </template>
 
 <style scoped lang="scss">

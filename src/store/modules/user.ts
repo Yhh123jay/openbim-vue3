@@ -8,12 +8,30 @@ import { login, getUserInfo, logout } from '@/api/user'
 //引入持久化存储
 import {SET_TOKEN,GET_TOKEN,REMOVE_TOKEN} from '@/utils/token'
 
+//引入路由
+import { asnycRoute, constantRoute } from '@/router/routes'
+
+
+//通过用户传来的异步路由,过滤出当前用户需要展示的异步路由
+function filterAsyncRoute(asnycRoute: any, routes: any) {
+  return asnycRoute.filter((item: any) => {
+    if (routes.includes(item.name)) {
+      if (item.children && item.children.length > 0) {
+        //硅谷333账号:product\trademark\attr\sku
+        item.children = filterAsyncRoute(item.children, routes)
+      }
+      return true
+    }
+  })
+}
+
 //创建仓库
 let useUserStore = defineStore('User',{
   //数据
   state: ():UserState => ({
     token: GET_TOKEN(),//用户的唯一标识
-    userInfo: {}
+    userInfo: {},
+    menuRoutes: constantRoute,
   }),
 
   //计算属性
